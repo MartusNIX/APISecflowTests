@@ -27,9 +27,9 @@ Scenario: 4 Update employee
 	Then the user gets PUT response "Successfully! Record has been updated."
 
 Scenario: 5 Delete employee
-	When the user sends DELETE request
-	Then the user gets response <Successfully! Record has been deleted>
+	When the user sends DELETE request for employee with index "24"
+	Then the user gets DELETE response "Successfully! Record has been deleted"
 
 Scenario: 6 Check if employee does not exist
-	When the user sends GET request for specified employee
-	Then the user gets response about existence
+	When the user sends GET request if employee exist with index "100"
+	Then the user gets the response about user existence

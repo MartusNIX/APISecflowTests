@@ -1,13 +1,9 @@
-using APISecflowTests.Constants;
 using APISecflowTests.Controllers;
 using APISecflowTests.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using System;
-using System.Net.Http.Json;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
-using TechTalk.SpecFlow.CommonModels;
 
 namespace APISecflowTests.Tests
 {
@@ -17,6 +13,7 @@ namespace APISecflowTests.Tests
         private string actualStatus;
         private string actualId;
         private string actualMessage;
+        private bool dataIsNull;
 
 
         [When(@"the user sends GET request for all employees")]
@@ -78,6 +75,32 @@ namespace APISecflowTests.Tests
             Assert.AreEqual(expectedMessage, actualMessage, "User not updeted");
         }
 
+        [When(@"the user sends DELETE request for employee with index ""([^""]*)""")]
+        public async Task WhenTheUserSendsDELETERequestForEmployeeWithIndex(string index)
+        {
+            var response = await this.DeleteEmployeeAsync(index);
+            var jsonContent = JsonConvert.DeserializeObject<DelletedEmployeeModel>(response.Content);
+            actualMessage = jsonContent.message;
+        }
 
+        [Then(@"the user gets DELETE response ""([^""]*)""")]
+        public void ThenTheUserGetsDELETEResponse(string expectedMessage)
+        {
+            Assert.AreEqual(expectedMessage, actualMessage, "User not deleted");
+        }
+
+        [When(@"the user sends GET request if employee exist with index ""([^""]*)""")]
+        public async Task WhenTheUserSendsGETRequestIfEmployeeExistWithIndex(string index)
+        {
+            var response = await this.GetOneEmployeeAsync(index);
+            var jsonContent = JsonConvert.DeserializeObject<SingleEmployeeModel>(response.Content);
+            dataIsNull = jsonContent.data == null;
+        }
+
+        [Then(@"the user gets the response about user existence")]
+        public void ThenTheUserGetsTheResponseAboutUserExistence()
+        {
+            Assert.IsTrue(dataIsNull, "User data is not null, required user is exist");
+        }
     }
 }
