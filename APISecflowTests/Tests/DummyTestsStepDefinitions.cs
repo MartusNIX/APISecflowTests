@@ -1,81 +1,50 @@
+using APISecflowTests.Constants;
+using APISecflowTests.Controllers;
+using APISecflowTests.Models;
+using Newtonsoft.Json;
+using NUnit.Framework;
 using System;
+using System.Net.Http.Json;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.CommonModels;
 
 namespace APISecflowTests.Tests
 {
     [Binding]
-    public class DummyTestsStepDefinitions
+    public class DummyTestsStepDefinitions : EmployeeController
     {
+        private string actualStatus;
+        private string actualId;
+
+
         [When(@"the user sends GET request for all employees")]
-        public void WhenTheUserSendsGETRequestForAllEmployees()
+        public async Task WhenTheUserSendsGETRequestForAllEmployees()
         {
-            throw new PendingStepException();
+            var response = await this.GetEmployeesAsync();
+            var jsonContent = JsonConvert.DeserializeObject<AllEmployeesModel>(response.Content);
+            actualStatus = jsonContent.status;
+            
         }
 
-        [Then(@"the user gets the response with <success> status")]
-        public void ThenTheUserGetsTheResponseWithSuccessStatus()
+        [Then(@"the user gets the response with ""([^""]*)"" status")]
+        public void ThenTheUserGetsTheResponseWithStatus(string success)
         {
-            throw new PendingStepException();
+            Assert.AreEqual(success, actualStatus, "All Employees not found");
         }
 
-        [When(@"the user sends GET request for one employee")]
-        public void WhenTheUserSendsGETRequestForOneEmployee()
+        [When(@"the user sends GET request for employee with index ""([^""]*)""")]
+        public async Task WhenTheUserSendsGETRequestForThEmployee(string index)
         {
-            throw new PendingStepException();
+            var response = await this.GetOneEmployeeAsync(index);
+            var jsonContent = JsonConvert.DeserializeObject<SingleEmployeeModel>(response.Content);
+            actualId = jsonContent.data.id;
         }
 
-        [Then(@"the user gets response with required employee")]
-        public void ThenTheUserGetsResponseWithRequiredEmployee()
+        [Then(@"the user gets response with id employee ""([^""]*)"" ")]
+        public void ThenTheUserGetsResponseWithIdEmployee(string expectedId)
         {
-            throw new PendingStepException();
+            Assert.AreEqual(expectedId, actualId, "User by ID not found");
         }
 
-        [When(@"the user sends POST request")]
-        public void WhenTheUserSendsPOSTRequest(Table table)
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"the user gets response <Successfully! Record has been added\.>")]
-        public void ThenTheUserGetsResponseSuccessfullyRecordHasBeenAdded_()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"the user sends PUT request")]
-        public void WhenTheUserSendsPUTRequest(Table table)
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"the user gets response <Successfully! Record has been updated\.>")]
-        public void ThenTheUserGetsResponseSuccessfullyRecordHasBeenUpdated_()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"the user sends DELETE request")]
-        public void WhenTheUserSendsDELETERequest()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"the user gets response <Successfully! Record has been deleted>")]
-        public void ThenTheUserGetsResponseSuccessfullyRecordHasBeenDeleted()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"the user sends GET request for specified employee")]
-        public void WhenTheUserSendsGETRequestForSpecifiedEmployee()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"the user gets response about existence")]
-        public void ThenTheUserGetsResponseAboutExistence()
-        {
-            throw new PendingStepException();
-        }
     }
 }

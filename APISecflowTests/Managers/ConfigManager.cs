@@ -2,7 +2,7 @@
 
 namespace APISecflowTests.Managers
 {
-    internal class ConfigManager
+    public class ConfigManager
     {
         private const string ConfigFile = "config.json";
 

@@ -2,7 +2,7 @@
 
 namespace APISecflowTests.Models
 {
-    internal class SingleEmployeeModel
+    public class SingleEmployeeModel
     {
         [JsonProperty("status")]
         public string status { get; set; }

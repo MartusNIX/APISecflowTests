@@ -94,7 +94,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the user sends GET request for all employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.Then("the user gets the response with <success> status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets the response with \"success\" status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -118,10 +118,10 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 10
- testRunner.When("the user sends GET request for one employee", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user sends GET request for employee with index \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("the user gets response with required employee", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets response with id employee \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -160,7 +160,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the user sends POST request", ((string)(null)), table1, "When ");
 #line hidden
 #line 19
- testRunner.Then("the user gets response <Successfully! Record has been added.>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets response \"Successfully! Record has been added.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -199,7 +199,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the user sends PUT request", ((string)(null)), table2, "When ");
 #line hidden
 #line 27
- testRunner.Then("the user gets response <Successfully! Record has been updated.>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets response \"Successfully! Record has been updated.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -7,7 +7,7 @@ using RestSharp;
 
 namespace APISecflowTests.Controllers
 {
-    internal class BaseController : ConfigManager
+    public class BaseController : ConfigManager
     {
         protected string BaseUrl => Config[ConfigConstants.BaseUrl];
         protected RestClient RestClient => new RestClient(this.BaseUrl);

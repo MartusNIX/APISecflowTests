@@ -5,7 +5,7 @@ using APISecflowTests.Tests;
 
 namespace APISecflowTests.Controllers
 {
-    internal class EmployeeController : BaseController
+    public class EmployeeController : BaseController
     {
         private const string GetEmployeesUrl = "/employees";
         private const string GetEmployeeByIdUrl = "/employee/";

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace APISecflowTests.Models
 {
-    internal class DelletedEmployeeModel
+    public class DelletedEmployeeModel
     {
         [JsonProperty("status")]
         public string status { get; set; }
