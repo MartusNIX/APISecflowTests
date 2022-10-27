@@ -8,15 +8,15 @@ Scenario: 1 Get all employees
 
 Scenario: 2 Get one employee
 	When the user sends GET request for employee with index "10"
-	Then the user gets response with id employee "10" 
+	Then the user gets response with id employee "10"
 
 Scenario: 3 Create employee
 	When the user sends POST request
-	| Parameter       | Value |
-	| employee_name   | Asuna |
-	| employee_salary | 32000 |
-	| employee_age    | 21    |
-	Then the user gets response "Successfully! Record has been added."
+	| Parameter | Value |
+	| name      | Asuna |
+	| salary    | 32000 |
+	| age       | 21    |
+	Then the user gets POST response "Successfully! Record has been added."
 
 Scenario: 4 Update employee
 	When the user sends PUT request
@@ -24,7 +24,7 @@ Scenario: 4 Update employee
 	| employee_name   | Kirito |
 	| employee_salary | 11000  |
 	| employee_age    | 26     |
-	Then the user gets response "Successfully! Record has been updated."
+	Then the user gets PUT response "Successfully! Record has been updated."
 
 Scenario: 5 Delete employee
 	When the user sends DELETE request

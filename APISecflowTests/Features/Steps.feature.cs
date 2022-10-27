@@ -148,19 +148,19 @@ this.ScenarioInitialize(scenarioInfo);
                             "Parameter",
                             "Value"});
                 table1.AddRow(new string[] {
-                            "employee_name",
+                            "name",
                             "Asuna"});
                 table1.AddRow(new string[] {
-                            "employee_salary",
+                            "salary",
                             "32000"});
                 table1.AddRow(new string[] {
-                            "employee_age",
+                            "age",
                             "21"});
 #line 14
  testRunner.When("the user sends POST request", ((string)(null)), table1, "When ");
 #line hidden
 #line 19
- testRunner.Then("the user gets response \"Successfully! Record has been added.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets POST response \"Successfully! Record has been added.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -199,7 +199,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the user sends PUT request", ((string)(null)), table2, "When ");
 #line hidden
 #line 27
- testRunner.Then("the user gets response \"Successfully! Record has been updated.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets PUT response \"Successfully! Record has been updated.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
