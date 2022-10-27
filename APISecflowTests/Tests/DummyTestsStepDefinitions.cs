@@ -63,5 +63,21 @@ namespace APISecflowTests.Tests
             Assert.AreEqual(expectedMessage, actualMessage, "User not created");
         }
 
+        [When(@"the user sends PUT request for employee with index ""([^""]*)""")]
+        public async Task WhenTheUserSendsPUTRequestForEmployeeWithIndex(string index, Table table)
+        {
+            var model = table.CreateInstance<NewEmployeeDataModel>();
+            var sentResponse = await this.PutEmployeeAsync(index, model);
+            var jsonContent = JsonConvert.DeserializeObject<SingleEmployeeModel>(sentResponse.Content);
+            actualMessage = jsonContent.message;
+        }
+
+        [Then(@"the user gets PUT response ""([^""]*)""")]
+        public void ThenTheUserGetsPUTResponse(string expectedMessage)
+        {
+            Assert.AreEqual(expectedMessage, actualMessage, "User not updeted");
+        }
+
+
     }
 }

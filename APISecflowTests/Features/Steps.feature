@@ -19,11 +19,11 @@ Scenario: 3 Create employee
 	Then the user gets POST response "Successfully! Record has been added."
 
 Scenario: 4 Update employee
-	When the user sends PUT request
-	| Parameter       | Value  |
-	| employee_name   | Kirito |
-	| employee_salary | 11000  |
-	| employee_age    | 26     |
+	When the user sends PUT request for employee with index "2"
+	| Parameter | Value  |
+	| name      | Kirito |
+	| salary    | 11000  |
+	| age       | 26     |
 	Then the user gets PUT response "Successfully! Record has been updated."
 
 Scenario: 5 Delete employee

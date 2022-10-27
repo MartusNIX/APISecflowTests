@@ -187,16 +187,16 @@ this.ScenarioInitialize(scenarioInfo);
                             "Parameter",
                             "Value"});
                 table2.AddRow(new string[] {
-                            "employee_name",
+                            "name",
                             "Kirito"});
                 table2.AddRow(new string[] {
-                            "employee_salary",
+                            "salary",
                             "11000"});
                 table2.AddRow(new string[] {
-                            "employee_age",
+                            "age",
                             "26"});
 #line 22
- testRunner.When("the user sends PUT request", ((string)(null)), table2, "When ");
+ testRunner.When("the user sends PUT request for employee with index \"2\"", ((string)(null)), table2, "When ");
 #line hidden
 #line 27
  testRunner.Then("the user gets PUT response \"Successfully! Record has been updated.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
