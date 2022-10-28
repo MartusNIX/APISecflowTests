@@ -91,7 +91,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.When("the user sends GET request for all employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user gets all employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
  testRunner.Then("the user gets the response with \"success\" status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -118,7 +118,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 10
- testRunner.When("the user sends GET request for employee with index \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user gets the employee with the id \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
  testRunner.Then("the user gets response with id employee \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -157,10 +157,11 @@ this.ScenarioInitialize(scenarioInfo);
                             "age",
                             "21"});
 #line 14
- testRunner.When("the user sends POST request", ((string)(null)), table1, "When ");
+ testRunner.When("the user sends the request to add the following employee", ((string)(null)), table1, "When ");
 #line hidden
 #line 19
- testRunner.Then("the user gets POST response \"Successfully! Record has been added.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets the response about user creating \"Successfully! Record has been add" +
+                        "ed.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -196,10 +197,11 @@ this.ScenarioInitialize(scenarioInfo);
                             "age",
                             "26"});
 #line 22
- testRunner.When("the user sends PUT request for employee with index \"2\"", ((string)(null)), table2, "When ");
+ testRunner.When("the user sends the request to change the employee with id \"2\"", ((string)(null)), table2, "When ");
 #line hidden
 #line 27
- testRunner.Then("the user gets PUT response \"Successfully! Record has been updated.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets the response about user updating \"Successfully! Record has been upd" +
+                        "ated.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -223,10 +225,11 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 30
- testRunner.When("the user sends DELETE request for employee with index \"24\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user sends the request to delete the employee with id \"24\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 31
- testRunner.Then("the user gets DELETE response \"Successfully! Record has been deleted\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user gets the response about user deleting \"Successfully! Record has been del" +
+                        "eted\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -250,7 +253,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 34
- testRunner.When("the user sends GET request if employee exist with index \"100\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user sends the request if employee exist with id \"100\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 35
  testRunner.Then("the user gets the response about user existence", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

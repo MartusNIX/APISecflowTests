@@ -13,31 +13,31 @@ namespace APISecflowTests.Controllers
         private const string PutEmployeeUrl = "/update/";
         private const string DeleteEmployeeUrl = "/delete/";
 
-        protected async Task<IRestResponse> GetEmployeesAsync()
+        public async Task<IRestResponse> GetEmployeesAsync()
         {
             var resource = string.Concat(this.BaseUrl, GetEmployeesUrl);
             return await this.GetAsync(resource);
         }
 
-        protected async Task<IRestResponse> GetOneEmployeeAsync(string index)
+        public async Task<IRestResponse> GetOneEmployeeAsync(string index)
         {
             var resource = string.Concat(this.BaseUrl, GetEmployeeByIdUrl, index);
             return await this.GetAsync(resource);
         }
 
-        protected async Task<IRestResponse> PostEmployeeAsync(NewEmployeeDataModel model)
+        public async Task<IRestResponse> PostEmployeeAsync(NewEmployeeDataModel model)
         {
             var resourse = string.Concat(this.BaseUrl, PostEmployeeUrl);
             return await this.PostAsync(resourse, model);
         }
 
-        protected async Task<IRestResponse> PutEmployeeAsync(string index, NewEmployeeDataModel model)
+        public async Task<IRestResponse> PutEmployeeAsync(string index, NewEmployeeDataModel model)
         {
             var resource = string.Concat(BaseUrl, PutEmployeeUrl, index);
             return await PutAsync(resource, model);
         }
 
-        protected async Task<IRestResponse> DeleteEmployeeAsync(string index)
+        public async Task<IRestResponse> DeleteEmployeeAsync(string index)
         {
             var resource = string.Concat(this.BaseUrl, DeleteEmployeeUrl, index);
             return await this.DeleteAsync(resource);
