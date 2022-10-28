@@ -16,10 +16,12 @@ namespace APISecflowTests.Tests
         private bool dataIsNull;
 
         private readonly EmployeeController employeeController;
+        private readonly ScenarioContext scenarioContext;
 
-        public DummyTestsStepDefinitions()
+        public DummyTestsStepDefinitions(ScenarioContext scenarioContext)
         {
             employeeController = new EmployeeController();
+            this.scenarioContext = scenarioContext;
         }
 
 
@@ -28,13 +30,14 @@ namespace APISecflowTests.Tests
         {
             var response = await employeeController.GetEmployeesAsync();
             var jsonContent = JsonConvert.DeserializeObject<AllEmployeesModel>(response.Content);
-            actualStatus = jsonContent.status;
+            scenarioContext.Add("ActualStatus", jsonContent.status);
             
         }
 
         [Then(@"the user gets the response with ""([^""]*)"" status")]
         public void ThenTheUserGetsTheResponseWithStatus(string success)
         {
+            actualStatus = scenarioContext.Get<string>("ActualStatus");
             Assert.AreEqual(success, actualStatus, "All Employees not found");
         }
 
@@ -43,12 +46,13 @@ namespace APISecflowTests.Tests
         {
             var response = await employeeController.GetOneEmployeeAsync(index);
             var jsonContent = JsonConvert.DeserializeObject<SingleEmployeeModel>(response.Content);
-            actualId = jsonContent.data.id;
+            scenarioContext.Add("ActualId", jsonContent.data.id);
         }
 
         [Then(@"the user gets response with id employee ""([^""]*)""")]
         public void ThenTheUserGetsResponseWithIdEmployee(string expectedId)
         {
+            actualId = scenarioContext.Get<string>("ActualId");
             Assert.AreEqual(expectedId, actualId, "User by ID not found");
         }
 
@@ -58,12 +62,13 @@ namespace APISecflowTests.Tests
             var model = table.CreateInstance<NewEmployeeDataModel>();
             var sentResponse = await employeeController.PostEmployeeAsync(model);
             var jsonContent = JsonConvert.DeserializeObject<NewEmployeeDataModel>(sentResponse.Content);
-            actualMessage = jsonContent.message;
+            scenarioContext.Add("ActualMessage", jsonContent.message);
         }
 
         [Then(@"the user gets the response about user creating ""([^""]*)""")]
         public void ThenTheUserGetsPOSTResponse(string expectedMessage)
         {
+            actualMessage = scenarioContext.Get<string>("ActualMessage");
             Assert.AreEqual(expectedMessage, actualMessage, "User not created");
         }
 
@@ -73,12 +78,13 @@ namespace APISecflowTests.Tests
             var model = table.CreateInstance<NewEmployeeDataModel>();
             var sentResponse = await employeeController.PutEmployeeAsync(index, model);
             var jsonContent = JsonConvert.DeserializeObject<SingleEmployeeModel>(sentResponse.Content);
-            actualMessage = jsonContent.message;
+            scenarioContext.Add("ActualMessage", jsonContent.message);
         }
 
         [Then(@"the user gets the response about user updating ""([^""]*)""")]
         public void ThenTheUserGetsPUTResponse(string expectedMessage)
         {
+            actualMessage = scenarioContext.Get<string>("ActualMessage");
             Assert.AreEqual(expectedMessage, actualMessage, "User not updeted");
         }
 
@@ -87,12 +93,13 @@ namespace APISecflowTests.Tests
         {
             var response = await employeeController.DeleteEmployeeAsync(index);
             var jsonContent = JsonConvert.DeserializeObject<DelletedEmployeeModel>(response.Content);
-            actualMessage = jsonContent.message;
+            scenarioContext.Add("ActualMessage", jsonContent.message);
         }
 
         [Then(@"the user gets the response about user deleting ""([^""]*)""")]
         public void ThenTheUserGetsDELETEResponse(string expectedMessage)
         {
+            actualMessage = scenarioContext.Get<string>("ActualMessage");
             Assert.AreEqual(expectedMessage, actualMessage, "User not deleted");
         }
 
@@ -101,12 +108,13 @@ namespace APISecflowTests.Tests
         {
             var response = await employeeController.GetOneEmployeeAsync(index);
             var jsonContent = JsonConvert.DeserializeObject<SingleEmployeeModel>(response.Content);
-            dataIsNull = jsonContent.data == null;
+            scenarioContext.Add("DataIsNull", jsonContent.data == null);
         }
 
         [Then(@"the user gets the response about user existence")]
         public void ThenTheUserGetsTheResponseAboutUserExistence()
         {
+            dataIsNull = scenarioContext.Get<bool>("DataIsNull");
             Assert.IsTrue(dataIsNull, "User data is not null, required user is exist");
         }
     }
