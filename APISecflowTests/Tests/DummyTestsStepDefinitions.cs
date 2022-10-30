@@ -1,9 +1,11 @@
 using APISecflowTests.Controllers;
 using APISecflowTests.Models;
+using FluentAssertions;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+
 
 namespace APISecflowTests.Tests
 {
@@ -31,7 +33,7 @@ namespace APISecflowTests.Tests
             var response = await employeeController.GetEmployeesAsync();
             var jsonContent = JsonConvert.DeserializeObject<AllEmployeesModel>(response.Content);
             scenarioContext.Add("ActualStatus", jsonContent.status);
-            
+
         }
 
         [Then(@"the user gets the response with ""([^""]*)"" status")]
@@ -117,5 +119,27 @@ namespace APISecflowTests.Tests
             dataIsNull = scenarioContext.Get<bool>("DataIsNull");
             Assert.IsTrue(dataIsNull, "User data is not null, required user is exist");
         }
+
+        [Then(@"the user gets the response ""([^""]*)""")]
+        public void ThenTheUserGetsTheResponse(string success)
+        {
+            actualMessage = scenarioContext.Get<string>("ActualMessage");
+            switch (success)
+            {
+                case "Successfully! Record has been added.":
+                    actualMessage.Should().Be(success);
+                    break;
+                case "Successfully! Record has been updated.":
+                    actualMessage.Should().Be(success);
+                    break;
+                case "Successfully! Record has been deleted":
+                    actualMessage.Should().Be(success);
+                    break;
+                default:
+                    Console.WriteLine("Not success");
+                    break;
+            }
+        }
+
     }
 }

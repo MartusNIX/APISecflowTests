@@ -16,7 +16,8 @@ Scenario: 3 Create employee
 	| name      | Asuna |
 	| salary    | 32000 |
 	| age       | 21    |
-	Then the user gets the response about user creating "Successfully! Record has been added."
+	#Then the user gets the response about user creating "Successfully! Record has been added."
+	Then the user gets the response "Successfully! Record has been added."
 
 Scenario: 4 Update employee
 	When the user sends the request to change the employee with id "2"
@@ -24,11 +25,13 @@ Scenario: 4 Update employee
 	| name      | Kirito |
 	| salary    | 11000  |
 	| age       | 26     |
-	Then the user gets the response about user updating "Successfully! Record has been updated."
+	#Then the user gets the response about user updating "Successfully! Record has been updated."
+	Then the user gets the response "Successfully! Record has been updated."
 
 Scenario: 5 Delete employee
 	When the user sends the request to delete the employee with id "24"
-	Then the user gets the response about user deleting "Successfully! Record has been deleted"
+	#Then the user gets the response about user deleting "Successfully! Record has been deleted"
+	Then the user gets the response "Successfully! Record has been deleted"
 
 Scenario: 6 Check if employee does not exist
 	When the user sends the request if employee exist with id "100"
